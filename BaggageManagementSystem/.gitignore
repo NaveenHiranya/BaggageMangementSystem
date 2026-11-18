@@ -1,0 +1,47 @@
+
+# ==============================
+# Database credentials
+# ==============================
+Database.properties
+db.properties
+
+# ==============================
+# Java compiled files
+# ==============================
+*.class
+*.jar
+*.war
+*.ear
+
+# ==============================
+# Maven build output
+# ==============================
+target/
+
+# ==============================
+# NetBeans temporary files
+# ==============================
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# ==============================
+# IDE files
+# ==============================
+.idea/
+.vscode/
+*.iml
+
+# ==============================
+# Operating system files
+# ==============================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==============================
+# Logs
+# ==============================
+*.log
