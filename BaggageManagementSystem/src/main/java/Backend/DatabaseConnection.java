@@ -1,5 +1,5 @@
 
-package com.groupproject.baggagemanagementsystem.Backend;
+package Backend;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -27,12 +27,12 @@ public class DatabaseConnection {
 
             throw new SQLException("Cannot find Database.properties!", e);
         }
-
+        // Load database configuration and credentials from an external properties file
+        // to keep sensitive information separate from the source code.
         String url = props.getProperty("Database.url");
         String user = props.getProperty("Database.username");
         String password = props.getProperty("Database.password");
 
-        // Display loaded properties (never display password)
         System.out.println("URL: " + url);
         System.out.println("Username: " + user);
         System.out.println("Password loaded: " + (password != null));

@@ -1,7 +1,7 @@
 /*   
  *  @author Naveen Hiranya
  */
-package com.groupproject.baggagemanagementsystem.Backend;
+package Backend;
 
 import java.sql.Connection;
 import java.sql.SQLException;
