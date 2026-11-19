@@ -162,6 +162,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
         // TODO add your handling code here:
         RegisterFrame registerFrame = new RegisterFrame();
+        registerFrame.setLocationRelativeTo(null);
         registerFrame.setVisible(true);
 
         // Close login window

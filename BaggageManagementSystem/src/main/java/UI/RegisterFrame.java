@@ -4,6 +4,9 @@
  */
 package UI;
 
+import Backend.PersonIdGenerator;
+import Model.Person;
+
 /**
  *
  * @author navee
@@ -79,6 +82,7 @@ public class RegisterFrame extends javax.swing.JFrame {
         registerBtn.setMaximumSize(new java.awt.Dimension(70, 26));
         registerBtn.setMinimumSize(new java.awt.Dimension(70, 26));
         registerBtn.setPreferredSize(new java.awt.Dimension(70, 26));
+        registerBtn.addActionListener(this::registerBtnActionPerformed);
 
         errorLabel.setText("Incorrect email or password");
 
@@ -205,7 +209,6 @@ public class RegisterFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     private void customizeComponents() {
 
-
         // Register buttons
         registerBtn.setText("Register");
         registerBtn.setBackground(new java.awt.Color(16, 185, 129));
@@ -215,6 +218,29 @@ public class RegisterFrame extends javax.swing.JFrame {
         registerBtn.setBorderPainted(false);
         registerBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+    }
+
+    public static void validateFields(
+            String firstName,
+            String lastName,
+            String userName,
+            String password,
+            String address,
+            String contactNo,
+            String role) {
+
+        if (firstName == null || firstName.trim().isEmpty()
+                || lastName == null || lastName.trim().isEmpty()
+                || userName == null || userName.trim().isEmpty()
+                || password == null || password.trim().isEmpty()
+                || address == null || address.trim().isEmpty()
+                || contactNo == null || contactNo.trim().isEmpty()) {
+
+            throw new IllegalArgumentException("Field cannot be empty");
+        }
+        if (role == null || role.trim().isEmpty()) {
+            throw new IllegalArgumentException("Role should be selected");
+        }
     }
     private void contactTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactTextFieldActionPerformed
         // TODO add your handling code here:
@@ -243,11 +269,66 @@ public class RegisterFrame extends javax.swing.JFrame {
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
         LoginFrame loginFrame = new LoginFrame();
+        loginFrame.setLocationRelativeTo(null);
         loginFrame.setVisible(true);
 
         // Close login window
         this.dispose();
     }//GEN-LAST:event_backBtnActionPerformed
+
+
+    private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
+        // TODO add your handling code here:
+        
+        String firstName = firstNameTextField.getText();
+        String lastName = lastNameTextField.getText();
+        String userName = userNameTextField.getText();
+        String password = passwordTextField.getText();
+        String address = addressTextField.getText();
+        String contactNo = contactTextField.getText();
+        String role = "";
+        String personID = null;
+        String name = null;
+
+        if (passengerRadio.isSelected()) {
+            role = "Passenger";
+        } else if (employeeRadio.isSelected()) {
+            role = "employee";
+        }
+
+        try {
+            validateFields(
+                    firstName,
+                    lastName,
+                    userName,
+                    password,
+                    address,
+                    contactNo,
+                    role
+            );
+            //...
+            errorLabel.setText("Validation success");
+            personID = PersonIdGenerator.generatePersonId();
+            name = firstName + " " + lastName;
+            
+            Person person = new Person(
+                        personID,
+                        name,
+                        userName,
+                        password,
+                        address,
+                        contactNo
+            );
+           
+
+        } catch (IllegalArgumentException e) {
+            errorLabel.setText(e.getMessage());
+            
+        } catch (Exception e){
+            errorLabel.setText(e.getMessage());
+        }
+       
+    }//GEN-LAST:event_registerBtnActionPerformed
 
     /**
      * @param args the command line arguments
