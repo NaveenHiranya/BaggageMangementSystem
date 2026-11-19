@@ -9,7 +9,7 @@ package UI;
  * @author navee
  */
 public class LoginFrame extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(LoginFrame.class.getName());
 
     /**
@@ -17,6 +17,7 @@ public class LoginFrame extends javax.swing.JFrame {
      */
     public LoginFrame() {
         initComponents();
+        customizeComponents();
     }
 
     /**
@@ -28,23 +29,144 @@ public class LoginFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        loginForm = new javax.swing.JPanel();
+        loginTItle = new javax.swing.JLabel();
+        userNameLabel = new javax.swing.JLabel();
+        userNameTextField = new javax.swing.JTextField();
+        passwordLabel = new javax.swing.JLabel();
+        passwordTextField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        registerBtn = new javax.swing.JButton();
+        loginBtn = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LoginWidow");
         setName("Login"); // NOI18N
+        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1200, Short.MAX_VALUE)
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        loginForm.setBackground(new java.awt.Color(255, 255, 255));
+        loginForm.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        loginForm.setPreferredSize(new java.awt.Dimension(600, 600));
+
+        loginTItle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        loginTItle.setText("Login");
+
+        userNameLabel.setText("User name");
+
+        userNameTextField.addActionListener(this::userNameTextFieldActionPerformed);
+
+        passwordLabel.setText("Password");
+
+        passwordTextField.addActionListener(this::passwordTextFieldActionPerformed);
+
+        jLabel3.setText("Don't have an account ?");
+
+        registerBtn.setText("Register");
+        registerBtn.setPreferredSize(new java.awt.Dimension(77, 26));
+        registerBtn.addActionListener(this::registerBtnActionPerformed);
+
+        loginBtn.setText("Login");
+        loginBtn.setMaximumSize(new java.awt.Dimension(70, 26));
+        loginBtn.setMinimumSize(new java.awt.Dimension(70, 26));
+        loginBtn.setPreferredSize(new java.awt.Dimension(70, 26));
+
+        jLabel4.setText("Incorrect email or password");
+
+        javax.swing.GroupLayout loginFormLayout = new javax.swing.GroupLayout(loginForm);
+        loginForm.setLayout(loginFormLayout);
+        loginFormLayout.setHorizontalGroup(
+            loginFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginFormLayout.createSequentialGroup()
+                .addGap(88, 88, 88)
+                .addGroup(loginFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(loginFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(passwordTextField)
+                        .addComponent(loginTItle, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(userNameTextField)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(registerBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
+                        .addComponent(passwordLabel)
+                        .addComponent(loginBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(userNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+        loginFormLayout.setVerticalGroup(
+            loginFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginFormLayout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(loginTItle)
+                .addGap(18, 18, 18)
+                .addComponent(userNameLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(userNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(passwordLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(registerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(167, Short.MAX_VALUE))
         );
+
+        loginTItle.getAccessibleContext().setAccessibleDescription("");
+        registerBtn.getAccessibleContext().setAccessibleName("registerBtn");
+        loginBtn.getAccessibleContext().setAccessibleName("Login");
+
+        jPanel1.add(loginForm, new java.awt.GridBagConstraints());
+
+        getContentPane().add(jPanel1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private void customizeComponents() {
+
+        // Create account button
+        registerBtn.setText("Create Account");
+        registerBtn.setBackground(new java.awt.Color(37, 99, 235));
+        registerBtn.setForeground(java.awt.Color.WHITE);
+        registerBtn.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14));
+        registerBtn.setFocusPainted(false);
+        registerBtn.setBorderPainted(false);
+        registerBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        // Login buttons
+        loginBtn.setText("Login");
+        loginBtn.setBackground(new java.awt.Color(16, 185, 129));
+        loginBtn.setForeground(java.awt.Color.WHITE);
+        loginBtn.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14));
+        loginBtn.setFocusPainted(false);
+        loginBtn.setBorderPainted(false);
+        loginBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+    }
+    private void userNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userNameTextFieldActionPerformed
+
+    private void passwordTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordTextFieldActionPerformed
+
+    private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
+        // TODO add your handling code here:
+        RegisterFrame registerFrame = new RegisterFrame();
+        registerFrame.setVisible(true);
+
+        // Close login window
+        this.dispose();
+    }//GEN-LAST:event_registerBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -72,5 +194,16 @@ public class LoginFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton loginBtn;
+    private javax.swing.JPanel loginForm;
+    private javax.swing.JLabel loginTItle;
+    private javax.swing.JLabel passwordLabel;
+    private javax.swing.JTextField passwordTextField;
+    private javax.swing.JButton registerBtn;
+    private javax.swing.JLabel userNameLabel;
+    private javax.swing.JTextField userNameTextField;
     // End of variables declaration//GEN-END:variables
 }
